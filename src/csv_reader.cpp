@@ -46,7 +46,7 @@ void writePointsToCsv(std::string csv_file_out,Eigen::MatrixX3d input_points){
   std::fstream fout;
   std::string data;
   double tempx,tempy;
-  double theta=30*PI/180,tx,ty; 
+  double theta=0.785,tx=0.5,ty=0.5; 
   fout.open(csv_file_out,std::ios::out);
   //std::cout<<"input_points rowsize: "<<input_points.rows()<<std::endl;
   // for(int i=0;i<input_points.rows();i++){
@@ -63,6 +63,7 @@ void writePointsToCsv(std::string csv_file_out,Eigen::MatrixX3d input_points){
 
   input_points=(rot*(input_points.transpose())).transpose();
   int rs;
+  fout<<"x,y"<<endl;
   for(rs=0;rs<=input_points.rows()-1;rs++){
     fout<<input_points(rs,0)<<","<<input_points(rs,1)<<endl;
   }
